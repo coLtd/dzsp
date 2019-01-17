@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar v-show="true">
+    <!-- <v-toolbar v-show="true">
       <v-toolbar-side-icon></v-toolbar-side-icon>
       <v-toolbar-title>全景电子沙盘</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -9,7 +9,7 @@
         <v-btn flat>Link Two</v-btn>
         <v-btn flat>Link Three</v-btn>
       </v-toolbar-items>
-    </v-toolbar>
+    </v-toolbar> -->
     <core-view />
   </v-app>
 </template>

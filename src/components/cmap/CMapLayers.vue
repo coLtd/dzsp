@@ -1,6 +1,7 @@
 <template>
   <div class="cmap-container">
-    <div class="cmap" style="width: 100%; height: 100%;">
+    <div class="cmap"
+         style="width: 100%; height: 100%;">
     </div>
     <template v-if="layers">
       <slot></slot>
@@ -112,24 +113,12 @@ export default {
   methods: {
     loadCMap () {
       return new Promise((resolve, reject) => {
-        // function load (src) {
-        //   const result = document.createElement('script')
-        //   result.src = src
-        //   result.type = 'text/javascript'
-        //   document.head.appendChild(result)
-        //   return result
-        // }
-
-        // const mapScript = load('http://satellite.casm.ac.cn:8020/geowinweb/api?version=mapi&map=map&utils=advext,cartogram')
-        // mapScript.onload = () => {
         let intervalId = setInterval(() => {
           if (!window.CMapLayers) return
           clearInterval(intervalId)
           initMapTypes()
           resolve()
         }, 100)
-        // }
-        // mapScript.onerror = () => reject()
       })
     },
     createMap () {
@@ -164,7 +153,7 @@ export default {
       if (this.control[name].load) this.control[name].load()
     },
     setCenter () {
-      this.delaySet(() => 
+      this.delaySet(() =>
         this.layers.setCenter(this.center, this.zoom)
       )
     },

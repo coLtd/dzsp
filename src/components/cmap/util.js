@@ -1,14 +1,12 @@
-
-function mapOf (name, maxZoom, sate, sateLabel) {
+function mapOf(name, maxZoom, sate, sateLabel) {
   let layers = [new window.CTileLayer(2, maxZoom, sate, null, null)]
   if (sateLabel) layers.push(new window.CTileLayer(2, maxZoom, sateLabel, null, null))
   return new window.CMapType(layers, name)
 }
 
-let typesMap = {
-}
+let typesMap = {}
 
-export function initMapTypes () {
+export function initMapTypes() {
   typesMap = {
     HIDDENMAP: mapOf('隐藏', 18, null),
     VECTORMAP: mapOf('矢量', 17, 'mapyn'),
@@ -19,7 +17,7 @@ export function initMapTypes () {
   }
 }
 
-export function mapTypeOf (name) {
+export function mapTypeOf(name) {
   return typesMap[name]
 }
 
@@ -46,7 +44,7 @@ const AreaRefMixMap = {
   610622000000: types.YCMIXMAP // 延川县
 }
 
-export function mixMapTypeOfArea (areaIds) {
+export function mixMapTypeOfArea(areaIds) {
   if (!areaIds) return types.MIXMAP
   if (Array.isArray(areaIds)) {
     for (let i = 0; i < areaIds.length; i++) {
@@ -61,13 +59,15 @@ export function mixMapTypeOfArea (areaIds) {
   return AreaRefMixMap[areaIds] || types.MIXMAP
 }
 
-export function capitalize (str) {
+export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-export function watchSetter (targetName, props) {
+export function watchSetter(targetName, props) {
   return props.reduce((r, prop) => {
-    let conf = typeof prop === 'string' ? { prop } : prop
+    let conf = typeof prop === 'string' ? {
+      prop
+    } : prop
     r[conf.prop] = {
       handler: function (val) {
         if (!this[targetName]) return
